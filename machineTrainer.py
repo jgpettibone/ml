@@ -15,7 +15,7 @@ from math import sqrt
 ###############################################################
 #Reads features from training data
 
-features_raw = pd.read_csv("/Users/jeanettepettibone/AllFeatures.csv", delimiter=',')
+features_raw = pd.read_csv("./Features/AllFeatures.csv", delimiter=',')
 features = np.array(features_raw)
 print features.shape
 
@@ -24,7 +24,7 @@ print features.shape
 ###############################################################
 #Reads results from training data
 
-data_raw = pd.read_csv("/Users/jeanettepettibone/training_solutions_rev1.csv", delimiter=',',index_col=0)
+data_raw = pd.read_csv("./Data/training_solutions_rev1.csv", delimiter=',',index_col=0)
 data = np.array(data_raw)
 print data.shape
 
@@ -33,7 +33,7 @@ print data.shape
 ###############################################################
 #Reads features from test data
 
-test_raw = pd.read_csv("/Users/jeanettepettibone/TestAllFeatures.csv", delimiter=',')
+test_raw = pd.read_csv("./Features/TestAllFeatures.csv", delimiter=',')
 test = np.array(test_raw)
 print test.shape
 
@@ -56,7 +56,7 @@ rfr.fit(featureFitting, fitData)
 print 'predicting ...'
 predictData = test[0:79975, 1:406]
 predict = rfr.predict(predictData)
-joblib.dump(predict, 'Solutions/output-predict-50MaxFeat')
+joblib.dump(predict, './Solutions/output-predict-50MaxFeat')
 
 ###############################################################
 
@@ -69,8 +69,9 @@ headerRow = 'GalaxyID,Class1.1,Class1.2,Class1.3,Class2.1,Class2.2,Class3.1,Clas
 formatting = '%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f'
 prediction = np.column_stack((galIDs, predict))
 
-np.savetxt('Solutions/predtest-100-50.csv', prediction, fmt=formatting, delimiter=',', newline='\n', header=headerRow, footer='', comments='')
+np.savetxt('./Solutions/predtest-100-50.csv', prediction, fmt=formatting, delimiter=',', newline='\n', header=headerRow, footer='', comments='')
 
 print "done!"
 
 ###############################################################
+  
