@@ -15,7 +15,7 @@ from math import sqrt
 ###############################################################
 #Reads features from training data
 
-features_raw = pd.read_csv("./Features/AllFeatures.csv", delimiter=',')
+features_raw = pd.read_csv("./Features/TrainAllFeatures.csv", delimiter=',')
 features = np.array(features_raw)
 print features.shape
 
